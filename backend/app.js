@@ -6,6 +6,7 @@ const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 app.use(securityHeaders);
 app.use(corsMiddleware);
 app.use(express.json({ limit: '20kb', strict: true }));

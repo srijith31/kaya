@@ -21,12 +21,14 @@ For Gmail/Google Workspace SMTP, use an app password rather than your normal acc
 
 ```env
 EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=465
+EMAIL_PORT=587
 EMAIL_USER=your-sending-account@gmail.com
 EMAIL_PASSWORD=your-16-character-app-password
 EMAIL_FROM=your-sending-account@gmail.com
 EMAIL_FOUNDER=teamkayasupport@gmail.com
 ```
+
+Use Gmail's STARTTLS port `587` on Render. Port `465` can time out on hosted services.
 
 The sending account must have 2-Step Verification enabled before an app password can be created. Keep these values only in the backend deployment secret manager or an uncommitted `backend/.env` file.
 
