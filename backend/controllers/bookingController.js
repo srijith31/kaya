@@ -9,7 +9,9 @@ function publicBookingResponse(booking, type) {
 
 async function createBooking(Model, data, prefix, type) {
   const booking = await Model.create({ ...data, bookingReference: createBookingReference(prefix) });
-  await sendBookingConfirmation({ bookingType: type, booking });
+  sendBookingConfirmation({ bookingType: type, booking }).catch(error => {
+    console.error(`Booking email processing failed for ${booking.bookingReference}:`, error.message);
+  });
   return booking;
 }
 
