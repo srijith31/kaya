@@ -43,20 +43,8 @@ async function sendMail(message) {
   ]);
 }
 
-async function sendBookingConfirmation({ bookingType, booking }) {
+async function sendBookingNotification({ bookingType, booking }) {
   if (!resendEnabled && !transporter) return { sent: false, reason: 'Email service is not configured' };
-  const results = [];
-  try {
-    await sendMail({
-      from: email.from,
-      to: booking.businessEmail,
-      subject: `Kaya ${bookingType} request received`,
-      text: `Thanks for contacting Kaya. Your reference is ${booking.bookingReference}. The Kaya team will confirm next steps separately.`,
-    });
-    results.push('company');
-  } catch (error) {
-    console.error('Company confirmation email failed:', error.message);
-  }
   try {
     await sendMail({
       from: email.from,
@@ -64,20 +52,17 @@ async function sendBookingConfirmation({ bookingType, booking }) {
       subject: `New Kaya ${bookingType} enquiry: ${booking.bookingReference}`,
       text: [
         `A new Kaya ${bookingType} enquiry was received.`,
-        `Reference: ${booking.bookingReference}`,
-        `Company: ${booking.companyName}`,
-        `Contact: ${booking.fullName || booking.contactName}`,
-        `Email: ${booking.businessEmail}`,
-        `Phone: ${booking.phone || 'Not provided'}`,
-        `Industry: ${booking.industry}`,
-        `Received: ${booking.createdAt.toISOString()}`,
+        '',
+        ...Object.entries(booking.toObject ? booking.toObject() : booking)
+          .filter(([key]) => !['_id', '__v', 'createdAt', 'updatedAt'].includes(key))
+          .map(([key, value]) => `${key}: ${value === undefined || value === '' ? 'Not provided' : value}`),
       ].join('\n'),
     });
-    results.push('founder');
+    return { sent: true, deliveredTo: [email.founder || 'teamkayasupport@gmail.com'] };
   } catch (error) {
-    console.error('Founder notification email failed:', error.message);
+    console.error('Booking notification email failed:', error.message);
+    return { sent: false, reason: 'Email delivery failed' };
   }
-  return results.length ? { sent: true, deliveredTo: results } : { sent: false, reason: 'Email delivery failed' };
 }
 
-module.exports = { sendBookingConfirmation };
+module.exports = { sendBookingNotification };
