@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: Fraunces, Georgia, serif;
+  --font-sans: 'DM Sans', sans-serif;
+  --color-teal: #073B3A;
+  --color-forest: #1F5C45;
+  --color-mint: #E8F4EE;
+  --color-warm: #FCFDF9;
+  --color-ink: #173331;
+  --color-sage: #78918A;
+  --color-dashboard-bg: #F7F9F7;
+  --color-dashboard-surface: #F4F7F4;
+  --color-dashboard-primary: #1B4332;
+  --color-dashboard-hover: #2D6A4F;
+  --color-dashboard-accent: #40916C;
+  --color-dashboard-muted: #52796F;
+  --color-dashboard-border: #D8E2DC;
+  --color-dashboard-success: #52B788;
+  --color-dashboard-warning: #E9C46A;
+  --color-dashboard-danger: #E76F51;
+  --color-dashboard-info: #2A9D8F;
+  --color-dashboard-text: #1B4332;
+}
+
+:root { color: #173331; background: #FCFDF9; font-family: 'DM Sans', sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { text-decoration: none; color: inherit; }
+button, input, textarea, select { font: inherit; }
+.pathway-line { background: linear-gradient(115deg, transparent 0 42%, #b5d8c6 42.2% 42.7%, transparent 42.9% 100%); }
+.hero-grid { background-image: linear-gradient(rgba(7,59,58,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(7,59,58,.045) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
+.prose h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+.prose p { line-height: 1.8; }
+.prose h2:first-child { margin-top: 0; }
+.dashboard-shell { background: #F7F9F7; color: #1B4332; }
+.admin-app .dashboard-shell { min-height: calc(100vh - 4rem); }
+.admin-app .dashboard-shell > div { max-width: 80rem; }
+.dashboard-shell input:focus, .dashboard-shell select:focus, .dashboard-shell textarea:focus { border-color: #40916C; outline: none; box-shadow: 0 0 0 4px rgba(64,145,108,.14); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise .7s ease both; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
