@@ -17,6 +17,16 @@ For local API testing, use `curl`, Postman, or another API client against `http:
 
 Email delivery is optional. Configure `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASSWORD`, and `EMAIL_FROM` before enabling delivery. New registration notifications are sent to `teamkayasupport@gmail.com` by default; set `EMAIL_FOUNDER` to override that recipient. Email failures are logged and do not roll back a successful database write.
 
+For Render, Resend is preferred when SMTP connections time out:
+
+```env
+RESEND_API_KEY=re_your_api_key
+EMAIL_FROM=Kaya <notifications@your-verified-domain.com>
+EMAIL_FOUNDER=teamkayasupport@gmail.com
+```
+
+The `EMAIL_FROM` address must be verified in Resend. When `RESEND_API_KEY` and `EMAIL_FROM` are set, the API uses Resend instead of SMTP.
+
 For Gmail/Google Workspace SMTP, use an app password rather than your normal account password:
 
 ```env

@@ -13,6 +13,7 @@ module.exports = {
   mongoUri: process.env.MONGODB_URI || '',
   clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
   email: {
+    resendApiKey: process.env.RESEND_API_KEY,
     service: process.env.EMAIL_SERVICE,
     host: process.env.EMAIL_HOST,
     port: Number(process.env.EMAIL_PORT || 587),

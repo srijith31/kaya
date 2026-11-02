@@ -1,8 +1,9 @@
 const nodemailer = require('nodemailer');
 const { email } = require('../config/env');
 
+const resendEnabled = Boolean(email.resendApiKey && email.from);
 let transporter;
-if (email.host && email.user && email.password && email.from) {
+if (!resendEnabled && email.host && email.user && email.password && email.from) {
   transporter = nodemailer.createTransport({
     host: email.host,
     port: email.port,
@@ -14,7 +15,28 @@ if (email.host && email.user && email.password && email.from) {
   });
 }
 
+async function sendWithResend(message) {
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${email.resendApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: message.from,
+      to: [message.to],
+      subject: message.subject,
+      text: message.text,
+    }),
+  });
+  const body = await response.text();
+  if (!response.ok) throw new Error(`Resend request failed (${response.status}): ${body.slice(0, 300)}`);
+  return body;
+}
+
 async function sendMail(message) {
+  if (resendEnabled) return sendWithResend(message);
+  if (!transporter) throw new Error('Email service is not configured');
   return Promise.race([
     transporter.sendMail(message),
     new Promise((_, reject) => setTimeout(() => reject(new Error('SMTP request timed out')), 7000)),
@@ -22,7 +44,7 @@ async function sendMail(message) {
 }
 
 async function sendBookingConfirmation({ bookingType, booking }) {
-  if (!transporter || !email.from) return { sent: false, reason: 'Email service is not configured' };
+  if (!resendEnabled && !transporter) return { sent: false, reason: 'Email service is not configured' };
   const results = [];
   try {
     await sendMail({
