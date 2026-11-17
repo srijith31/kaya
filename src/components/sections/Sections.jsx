@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity } from 'lucide-react';
+import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity, Utensils, Video, HeartHandshake, PartyPopper, Bot, LayoutDashboard } from 'lucide-react';
 import { Container, Button, SectionHeading, Badge } from '../ui';
 
 export function Hero() {
@@ -58,6 +58,39 @@ export function Capabilities() {
     [ShieldCheck, 'Privacy by design', 'Employee control, clear boundaries and a workplace experience people can trust.', 'Current focus'],
   ];
   return <section className="py-20"><Container><SectionHeading eyebrow="Phase 1 capabilities" title="Wellness support that meets the moment.">A calm, practical layer of support for employees — and a clearer view for the organisations that care for them.</SectionHeading><div className="mt-14 grid gap-5 md:grid-cols-3">{items.map(([Icon, title, copy, status]) => <article key={title} className="rounded-3xl border border-teal/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-teal/5"><div className="flex items-center justify-between"><span className="inline-flex rounded-2xl bg-mint p-3 text-forest"><Icon size={22} /></span><span className="text-[10px] font-bold uppercase tracking-[.14em] text-forest">{status}</span></div><h3 className="mt-10 font-display text-2xl text-teal">{title}</h3><p className="mt-3 leading-relaxed text-sage">{copy}</p></article>)}</div></Container></section>;
+}
+
+export function WhatYouGet() {
+  const items = [
+    [Utensils, 'Daily wellness habit and one healthy food idea, delivered by email every morning'],
+    [Video, 'Two live online classes every week with real trainers'],
+    [HeartHandshake, 'Two private counselling sessions a week, optional for every employee'],
+    [PartyPopper, 'Fun online team events that keep people connected'],
+    [Bot, 'An AI wellness chat on our website, available anytime'],
+    [LayoutDashboard, 'An HR dashboard showing team wellbeing trends, fully anonymous with no individual data'],
+  ];
+  return (
+    <section className="border-t border-teal/10 bg-warm py-20">
+      <Container>
+        <SectionHeading eyebrow="What you get" title="Support that fits into the rhythm of work.">
+          Practical, human-centred tools designed to support your team every day.
+        </SectionHeading>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map(([Icon, text]) => (
+            <article
+              key={text}
+              className="rounded-3xl border border-teal/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-forest/25 hover:shadow-md"
+            >
+              <span className="inline-flex rounded-2xl bg-mint p-3 text-forest">
+                <Icon size={22} />
+              </span>
+              <p className="mt-5 text-base font-medium leading-relaxed text-ink">{text}</p>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
 }
 
 export function QuoteBlock() {
