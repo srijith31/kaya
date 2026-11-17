@@ -9,7 +9,7 @@ import { AdminDashboard, AdminLogin, AdminShell } from './pages/Admin';
 
 const intro = {
   about: ['About Kaya', 'The work behind the work.', 'Kaya exists because the everyday experience of work deserves more care, not more complexity.'],
-  approach: ['Our approach', 'Make the next right step possible.', 'We combine thoughtful listening, practical tools and steady partnership to help people feel better at work.'],
+  approach: ['Our approach', 'Wellbeing that fits into the workday, not around it.', 'Most wellness programs fail because they demand too much time and feel corporate. Kaya is built on small daily actions, live human connection and complete privacy.'],
   vision: ['Vision & mission', 'A more human way to work.', 'Our north star is simple: healthier people, healthier organisations, healthier futures.'],
   roadmap: ['Our roadmap', 'Progress, made visible.', 'We are building Kaya in the open, with the people and teams we are here to serve.'],
   partners: ['Founding corporate partners', 'Built with, not just for.', 'We are inviting a small group of teams across India and worldwide to shape what comes next.'],
@@ -35,12 +35,96 @@ function Vision() {
 }
 
 function Approach() {
-  const phases = [
-    { status: 'Current focus', title: 'Phase 1 · Digital wellness', tone: 'bg-teal text-white', items: ['Digital wellness support', 'Break and activity support', 'AI wellness coach', 'Wellness dashboard', 'Privacy and employee control'] },
-    { status: 'Phase 2 · Planned', title: 'Phase 2 · Human connection', tone: 'bg-mint text-teal', items: ['Instructor-led workplace wellness sessions', 'Deeper team rituals and guided practice'] },
-    { status: 'Phase 3 · Long-term aspiration', title: 'Phase 3 · Keep expanding access', tone: 'bg-white text-teal', items: ['A broader ecosystem of trusted wellbeing support, shaped by what employees and organisations need next.'] },
+  const steps = [
+    {
+      num: 'Step 1',
+      title: 'We onboard your team in one day.',
+      desc: 'No apps to install, nothing to configure. Employees join with their work email.',
+    },
+    {
+      num: 'Step 2',
+      title: 'The daily rhythm begins.',
+      desc: 'Every morning, each person gets a short wellness habit and one healthy food idea by email. Two minutes, done.',
+    },
+    {
+      num: 'Step 3',
+      title: 'Live human connection.',
+      desc: 'Two online classes a week with real trainers, two optional counselling sessions a week, and regular fun team events.',
+    },
+    {
+      num: 'Step 4',
+      title: 'You see the trends, never the individuals.',
+      desc: 'HR gets a simple dashboard of anonymous wellbeing signals, so you can support your team without intruding.',
+    },
   ];
-  return <><SimpleHero type="approach" /><Container><div className="py-20"><SectionHeading eyebrow="A phased approach" title="Build trust first. Grow with care.">We are clear about what is available today, what is in development and what belongs further ahead.</SectionHeading><div className="mt-14 grid gap-5 lg:grid-cols-3">{phases.map((phase, i) => <article key={phase.title} className={`rounded-[2rem] border border-teal/10 p-7 shadow-sm ${phase.tone}`}><Badge>{phase.status}</Badge><h2 className="mt-8 font-display text-3xl">{phase.title}</h2><ul className="mt-8 space-y-4 text-sm leading-relaxed">{phase.items.map(item => <li key={item} className="flex gap-3"><Check className="mt-0.5 shrink-0 text-forest" size={17} />{item}</li>)}</ul>{i === 0 && <p className="mt-8 border-t border-white/20 pt-5 text-xs font-semibold uppercase tracking-widest text-mint">Implemented product focus</p>}</article>)}</div></div><p className="mt-8 text-sm text-sage">Future development depends on validation, partner feedback and operational readiness.</p></Container><Pathway /><CTA /></>;
+
+  const beliefs = [
+    {
+      num: '01',
+      title: 'Small habits beat big programs',
+      desc: 'Real change happens through two-minute daily rituals people can keep, not overwhelming once-a-year initiatives.',
+    },
+    {
+      num: '02',
+      title: 'Real humans beat content libraries',
+      desc: 'Live trainers, counsellors and team events build real support that pre-recorded videos never can.',
+    },
+    {
+      num: '03',
+      title: 'Privacy builds participation',
+      desc: 'Employees engage because their individual data is never shared. HR only sees anonymous team trends.',
+    },
+  ];
+
+  return (
+    <>
+      <SimpleHero type="approach" />
+      <section className="py-20 sm:py-28">
+        <Container>
+          <SectionHeading eyebrow="How it works" title="Four clear steps. Zero friction.">
+            Everything runs in the background of your working day without extra software or complex administration.
+          </SectionHeading>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map(step => (
+              <article
+                key={step.num}
+                className="flex flex-col justify-between rounded-3xl border border-teal/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-forest/25 hover:shadow-md"
+              >
+                <div>
+                  <span className="inline-block rounded-full bg-mint px-3 py-1 text-xs font-bold text-forest">
+                    {step.num}
+                  </span>
+                  <h3 className="mt-6 font-display text-2xl text-teal">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-sage">{step.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+      <section className="border-t border-teal/10 bg-mint/40 py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="What we believe"
+            title="Three simple principles behind our work."
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {beliefs.map(b => (
+              <article
+                key={b.num}
+                className="rounded-3xl border border-teal/10 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-forest/25 hover:shadow-md"
+              >
+                <span className="font-display text-4xl text-forest/40">{b.num}</span>
+                <h3 className="mt-6 font-display text-2xl text-teal">{b.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-sage">{b.desc}</p>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+      <CTA />
+    </>
+  );
 }
 
 function Roadmap() {
