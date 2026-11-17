@@ -128,7 +128,57 @@ function Approach() {
 }
 
 function Roadmap() {
-  return <><SimpleHero type="roadmap" /><Container><div className="py-20"><SectionHeading eyebrow="The journey" title="From a thoughtful pilot to a cultural shift." /><p className="mt-5 max-w-2xl text-sm text-sage">Roadmap direction is indicative; timing and scope will follow validation, partner feedback and operational readiness.</p><div className="mt-14 ml-2 border-l border-forest/30">{[['Current focus', 'Invite the first partners', 'Work with a small group of teams across India and worldwide to understand the moments that matter.'], ['Planned', 'Prove what works', 'Turn insight into repeatable experiences, wellness signals and practical People-team tools.'], ['Long-term aspiration', 'Scale with care', 'Make a trusted wellbeing practice available across more teams without losing the human centre.']].map(([label, title, copy]) => <div key={label} className="relative pb-14 pl-8 last:pb-0"><div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-forest ring-8 ring-warm" /><p className="text-xs font-bold uppercase tracking-widest text-forest">{label}</p><h3 className="mt-3 font-display text-3xl text-teal">{title}</h3><p className="mt-3 max-w-xl text-sage">{copy}</p></div>)}</div></div></Container><CTA /></>;
+  const stages = [
+    [
+      'STAGE 1 · NOW',
+      'Founding cohort',
+      'We are onboarding the first 5 companies at a founding rate. Each gets the full program: daily habits and food ideas, live classes, counselling, team events, AI wellness chat and the anonymous HR dashboard.',
+    ],
+    [
+      'STAGE 2 · NEXT',
+      'Proof',
+      'With our founding partners, we measure what matters: participation rates, habit consistency and how teams feel month over month. We publish what we learn.',
+    ],
+    [
+      'STAGE 3 · THEN',
+      'Full launch',
+      'Open Kaya to companies across India and worldwide, with refined programs based on what the founding cohort taught us. Full pricing applies.',
+    ],
+    [
+      'STAGE 4 · LONG TERM',
+      'The standard for small teams',
+      'Make practical, private, human workplace wellbeing something every small company can afford — not a luxury for big corporates.',
+    ],
+  ];
+
+  return (
+    <>
+      <SimpleHero type="roadmap" />
+      <section className="py-20 sm:py-28">
+        <Container>
+          <SectionHeading eyebrow="The journey" title="A clear path from early validation to scale.">
+            We are building Kaya step by step, testing our assumptions and sharing progress openly along the way.
+          </SectionHeading>
+          <div className="mt-14 ml-2 border-l border-forest/30">
+            {stages.map(([badge, title, desc]) => (
+              <div key={title} className="relative pb-14 pl-8 last:pb-0">
+                <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-forest ring-8 ring-warm" />
+                <p className="text-xs font-bold uppercase tracking-widest text-forest">{badge}</p>
+                <h3 className="mt-3 font-display text-3xl text-teal">{title}</h3>
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-sage">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-14 border-t border-teal/10 pt-8">
+            <p className="text-xs font-semibold uppercase tracking-[.18em] text-sage">
+              Building in public — this page updates as we grow.
+            </p>
+          </div>
+        </Container>
+      </section>
+      <CTA />
+    </>
+  );
 }
 
 function Partners() {
