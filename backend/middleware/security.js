@@ -6,8 +6,25 @@ const { clientUrl, rateLimit: rateLimitConfig } = require('../config/env');
 const { adminApiKey } = require('../config/env');
 
 const securityHeaders = helmet();
+const configuredOrigins = clientUrl
+  ? clientUrl.split(',').map(origin => origin.trim().replace(/\/$/, '')).filter(Boolean)
+  : [];
+
 const corsOptions = {
-  origin: clientUrl.split(',').map(origin => origin.trim()),
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.trim().replace(/\/$/, '');
+    if (configuredOrigins.includes(cleanOrigin) || configuredOrigins.includes('*')) {
+      return callback(null, true);
+    }
+    if (/^https:\/\/([a-zA-Z0-9_-]+\.)*vercel\.app$/.test(cleanOrigin)) {
+      return callback(null, true);
+    }
+    if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(cleanOrigin)) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  },
   methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 204,
