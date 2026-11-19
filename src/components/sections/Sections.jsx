@@ -46,6 +46,34 @@ export function Trust() {
   return <section className="border-y border-teal/10 bg-mint/50 py-7"><Container className="grid gap-4 sm:grid-cols-3 sm:gap-8"><div><p className="text-xs font-bold uppercase tracking-[.14em] text-forest">Everyday wellbeing</p><p className="mt-1 text-sm text-sage">Designed for the working day</p></div><div><p className="text-xs font-bold uppercase tracking-[.14em] text-forest">Employee-controlled</p><p className="mt-1 text-sm text-sage">Clear boundaries and privacy</p></div><div><p className="text-xs font-bold uppercase tracking-[.14em] text-forest">Thoughtful pilots</p><p className="mt-1 text-sm text-sage">Built with early partners</p></div></Container></section>;
 }
 
+export function YogaBanner() {
+  return (
+    <section className="relative w-full overflow-hidden bg-teal">
+      <div className="relative aspect-[1935/825] min-h-[360px] w-full sm:min-h-[460px] lg:min-h-[520px]">
+        <img
+          src="/images/yoga-banner.jpg"
+          alt="Mindful movement in morning light"
+          className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.04]"
+        />
+        {/* Soft dark-green overlay (35-40%) to harmonize with the site */}
+        <div
+          className="absolute inset-0 bg-teal/40 mix-blend-multiply"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-teal/60 via-transparent to-teal/30"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+          <blockquote className="max-w-4xl font-display text-2xl leading-snug text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-5xl">
+            “Wellbeing is not a perk. It is the way people do their best work.”
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Pathway() {
   const items = [['01', 'Notice', 'Understand the lived experience behind the metrics.'], ['02', 'Nurture', 'Create rituals and resources people can actually use.'], ['03', 'Navigate', 'Build the confidence to make change stick.']];
   return <section className="bg-mint/60 py-20"><Container><SectionHeading eyebrow="Our approach" title="A pathway made for real life.">No one-size-fits-all playbooks. Kaya meets people where they are, then makes the next step feel possible.</SectionHeading><div className="mt-14 grid gap-5 md:grid-cols-3">{items.map(([n, t, d], i) => <div key={n} className="relative border-t-2 border-forest/30 pt-6"><span className="font-display text-5xl text-forest/30">{n}</span><h3 className="mt-6 font-display text-3xl text-teal">{t}</h3><p className="mt-3 leading-relaxed text-sage">{d}</p>{i < 2 && <div className="absolute right-0 top-[-7px] hidden text-forest md:block">→</div>}</div>)}</div></Container></section>;
