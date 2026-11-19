@@ -132,7 +132,7 @@ function Roadmap() {
     [
       'STAGE 1 · NOW',
       'Founding cohort',
-      'We are onboarding the first 5 companies at a founding rate. Each gets the full program: daily habits and food ideas, live classes, counselling, team events, AI wellness chat and the anonymous HR dashboard.',
+      'We are onboarding the first 5 companies at a founding rate of ₹10,000/month for the first 3 months. Each gets the full program: daily habits and food ideas, live classes, counselling, team events, AI wellness chat and the anonymous HR dashboard.',
     ],
     [
       'STAGE 2 · NEXT',
@@ -153,7 +153,15 @@ function Roadmap() {
 
   return (
     <>
-      <SimpleHero type="roadmap" />
+      <section className="bg-mint/60 py-20 sm:py-28">
+        <Container>
+          <p className="text-xs font-bold uppercase tracking-[.18em] text-forest">Progress, made visible</p>
+          <h1 className="mt-5 max-w-3xl font-display text-6xl leading-none text-teal sm:text-7xl">Our roadmap</h1>
+          <p className="mt-7 max-w-2xl text-xl leading-relaxed text-sage">
+            We are building Kaya in the open, with the people and teams we are here to serve.
+          </p>
+        </Container>
+      </section>
       <section className="py-20 sm:py-28">
         <Container>
           <SectionHeading eyebrow="The journey" title="A clear path from early validation to scale.">
@@ -168,6 +176,14 @@ function Roadmap() {
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-sage">{desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-16 text-center">
+            <p className="text-base font-medium text-sage sm:text-lg">The best time to join Kaya is now.</p>
+            <div className="mt-5 flex justify-center">
+              <Button to="/book-demo" className="px-8 py-4 text-base">
+                Join the founding cohort <ArrowRight size={18} className="ml-2" />
+              </Button>
+            </div>
           </div>
           <div className="mt-14 border-t border-teal/10 pt-8">
             <p className="text-xs font-semibold uppercase tracking-[.18em] text-sage">
