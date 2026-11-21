@@ -139,7 +139,40 @@ export function WhatYouGet() {
 }
 
 export function QuoteBlock() {
-  return <section className="py-20"><Container><div className="mx-auto max-w-4xl text-center"><p className="mb-6 text-xs font-bold uppercase tracking-[.18em] text-forest">The Kaya point of view</p><blockquote className="font-display text-4xl leading-tight text-teal sm:text-5xl">“When people have the space and support to feel well, better work follows.”</blockquote><p className="mt-7 text-sm font-semibold text-sage">— Kaya, built with People teams in mind</p></div></Container></section>;
+  return (
+    <section className="relative overflow-hidden py-24 sm:py-32">
+      {/* Background Image & Directional Lighting Blend */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <img
+          src="/images/quote-bg.jpg"
+          alt=""
+          className="h-full w-full object-cover object-[center_35%] brightness-[0.95] contrast-[1.03]"
+        />
+        {/* Directional sunlight gradient flowing from the left window light beams */}
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-50/30 via-warm/60 to-warm/80" />
+        {/* Soft atmospheric morning haze overlay */}
+        <div className="absolute inset-0 bg-warm/55 backdrop-blur-[1px]" />
+        {/* Top edge blend fading seamlessly from the mint partner section */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-mint/60 via-warm/70 to-transparent" />
+        {/* Bottom edge blend fading smoothly into the questions section */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-warm via-warm/75 to-transparent" />
+      </div>
+
+      <Container className="relative">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/80 bg-white/75 p-8 text-center shadow-lg shadow-teal/5 backdrop-blur-md sm:p-14">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[.18em] text-forest">
+            The Kaya point of view
+          </p>
+          <blockquote className="font-display text-3xl leading-tight text-teal sm:text-4xl md:text-5xl">
+            “When people have the space and support to feel well, better work follows.”
+          </blockquote>
+          <p className="mt-7 text-sm font-semibold text-sage">
+            — Kaya, built with People teams in mind
+          </p>
+        </div>
+      </Container>
+    </section>
+  );
 }
 
 export function CTA() {
