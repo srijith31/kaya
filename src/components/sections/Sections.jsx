@@ -140,37 +140,34 @@ export function WhatYouGet() {
 
 export function QuoteBlock() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
-      {/* Background Image & Directional Lighting Blend */}
-      <div className="absolute inset-0 -z-10" aria-hidden="true">
+    <section className="relative w-full overflow-hidden bg-teal">
+      <div className="relative aspect-[1935/825] min-h-[380px] w-full sm:min-h-[460px] lg:min-h-[520px]">
         <img
           src="/images/quote-bg.jpg"
-          alt=""
-          className="h-full w-full object-cover object-[center_35%] brightness-[0.95] contrast-[1.03]"
+          alt="The Kaya point of view"
+          className="h-full w-full object-cover object-center brightness-[0.9] contrast-[1.04]"
         />
-        {/* Directional sunlight gradient flowing from the left window light beams */}
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-50/30 via-warm/60 to-warm/80" />
-        {/* Soft atmospheric morning haze overlay */}
-        <div className="absolute inset-0 bg-warm/55 backdrop-blur-[1px]" />
-        {/* Top edge blend fading seamlessly from the mint partner section */}
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-mint/60 via-warm/70 to-transparent" />
-        {/* Bottom edge blend fading smoothly into the questions section */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-warm via-warm/75 to-transparent" />
-      </div>
-
-      <Container className="relative">
-        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/80 bg-white/75 p-8 text-center shadow-lg shadow-teal/5 backdrop-blur-md sm:p-14">
-          <p className="mb-6 text-xs font-bold uppercase tracking-[.18em] text-forest">
+        {/* Harmonized overlay to enrich lighting and integrate with Kaya brand */}
+        <div
+          className="absolute inset-0 bg-teal/35 mix-blend-multiply"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-teal/65 via-transparent to-teal/35"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[.2em] text-mint drop-shadow">
             The Kaya point of view
           </p>
-          <blockquote className="font-display text-3xl leading-tight text-teal sm:text-4xl md:text-5xl">
+          <blockquote className="max-w-4xl font-display text-2xl leading-snug text-white drop-shadow-lg sm:text-4xl md:text-5xl">
             “When people have the space and support to feel well, better work follows.”
           </blockquote>
-          <p className="mt-7 text-sm font-semibold text-sage">
+          <p className="mt-6 text-sm font-medium text-white/85 drop-shadow">
             — Kaya, built with People teams in mind
           </p>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
