@@ -6,8 +6,8 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-warm">
       <div className="hero-grid absolute inset-0 opacity-60" aria-hidden="true" />
-      <Container className="relative grid min-h-[680px] items-center gap-14 py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
-        <div className="animate-rise">
+      <Container className="relative flex min-h-[580px] sm:min-h-[640px] flex-col justify-center py-20 sm:py-28">
+        <div className="max-w-3xl animate-rise">
           <Badge><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-forest" />Designed for the everyday</Badge>
           <h1 className="mt-7 max-w-3xl font-display text-6xl leading-[.95] tracking-tight text-teal sm:text-7xl lg:text-[5.5rem]">
             Healthier People.<br /><em className="text-forest">Stronger Workplaces.</em>
@@ -20,22 +20,6 @@ export function Hero() {
             <Button to="/reserve-pilot" variant="secondary">Join the Founding Partner Programme</Button>
           </div>
           <p className="mt-5 text-xs font-semibold uppercase tracking-[.16em] text-sage">Built for People teams · Rooted in human support</p>
-        </div>
-        <div className="relative mx-auto w-full max-w-[540px] animate-rise pb-8 sm:pb-10">
-          <div className="absolute -left-4 top-12 z-10 hidden rounded-2xl border border-teal/10 bg-white p-4 shadow-xl shadow-teal/10 sm:block sm:-left-9">
-            <div className="flex items-center gap-3"><span className="rounded-full bg-mint p-2 text-forest"><Activity size={17} /></span><div><p className="text-xs font-bold text-teal">Your next small step</p><p className="mt-1 text-[11px] text-sage">Take a 5-minute reset</p></div></div>
-          </div>
-          <figure className="overflow-hidden rounded-[2rem] border border-teal/15 bg-white p-2 shadow-2xl shadow-teal/20 sm:p-3">
-            <div className="aspect-[1219/768] overflow-hidden rounded-[1.4rem]">
-              <img src="/images/kaya-workplace-dashboard-preview.png" width="1219" height="768" fetchPriority="high" className="h-full w-full object-cover object-top" alt="Kaya workplace wellbeing dashboard preview" />
-            </div>
-          </figure>
-          <figure className="absolute bottom-0 right-1 w-32 overflow-hidden rounded-2xl border-4 border-warm bg-white shadow-2xl shadow-teal/20 sm:right-3 sm:w-40">
-            <div className="aspect-[768/1045] overflow-hidden rounded-xl">
-              <img src="/images/kaya-activity-preview.png" width="768" height="1045" className="h-full w-full object-cover object-top" alt="Kaya activity and wellbeing support preview" />
-            </div>
-          </figure>
-          <p className="mt-4 pl-3 text-xs font-semibold uppercase tracking-[.18em] text-sage">Product concept preview · early stage</p>
         </div>
       </Container>
     </section>
