@@ -89,49 +89,76 @@ export function Capabilities() {
 }
 
 export function WhatYouGet() {
-  const items = [
+  const leftItems = [
     [Utensils, 'Daily wellness habit and one healthy food idea, delivered by email every morning'],
     [Video, 'Two live online classes every week with real trainers'],
     [HeartHandshake, 'Two private counselling sessions a week, optional for every employee'],
+  ];
+
+  const rightItems = [
     [PartyPopper, 'Fun online team events that keep people connected'],
     [Bot, 'An AI wellness chat on our website, available anytime'],
     [LayoutDashboard, 'An HR dashboard showing team wellbeing trends, fully anonymous with no individual data'],
   ];
+
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28">
-      {/* Background Image & Multi-layer Blending */}
+    <section className="relative overflow-hidden py-24 sm:py-32">
+      {/* Background Image & Refined Natural Lighting Blend */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <img
           src="/images/what-you-get-bg.jpg"
-          alt=""
-          className="h-full w-full object-cover object-center brightness-[0.94] contrast-[1.04]"
+          alt="Mindful movement in sunlit studio"
+          className="h-full w-full object-cover object-center brightness-[0.98] contrast-[1.04]"
         />
-        {/* Soft atmospheric overlay */}
-        <div className="absolute inset-0 bg-warm/65 backdrop-blur-[1px]" />
-        {/* Harmonizing brand tint */}
-        <div className="absolute inset-0 bg-forest/5 mix-blend-multiply" />
-        {/* Top transition fade from previous section */}
-        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-warm via-warm/80 to-transparent" />
-        {/* Bottom transition fade to next section (mint/60) */}
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-mint/60 via-warm/70 to-transparent" />
+        {/* Light ambient warmth preserving clarity of the image */}
+        <div className="absolute inset-0 bg-warm/25" />
+        {/* Soft top feather */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-warm via-warm/40 to-transparent" />
+        {/* Soft bottom feather transitioning into the Approach section */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-mint/60 via-mint/20 to-transparent" />
       </div>
 
       <Container className="relative">
-        <SectionHeading eyebrow="What you get" title="Support that fits into the rhythm of work.">
-          Practical, human-centred tools designed to support your team every day.
-        </SectionHeading>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map(([Icon, text]) => (
-            <article
-              key={text}
-              className="group rounded-3xl border border-white/80 bg-white/85 p-7 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white/95 hover:shadow-lg hover:shadow-teal/5"
-            >
-              <span className="inline-flex rounded-2xl bg-mint/90 p-3 text-forest transition group-hover:bg-mint group-hover:scale-105">
-                <Icon size={22} />
-              </span>
-              <p className="mt-5 text-base font-medium leading-relaxed text-ink">{text}</p>
-            </article>
-          ))}
+        <div className="mx-auto max-w-3xl text-center flex flex-col items-center">
+          <SectionHeading eyebrow="What you get" title="Support that fits into the rhythm of work.">
+            Practical, human-centred tools designed to support your team every day.
+          </SectionHeading>
+        </div>
+
+        {/* 3 cards left, center framed for the yogi, 3 cards right */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-[1fr_minmax(180px,300px)_1fr] items-center">
+          {/* Left column: 3 cards top to down */}
+          <div className="flex flex-col gap-5">
+            {leftItems.map(([Icon, text]) => (
+              <article
+                key={text}
+                className="group rounded-3xl border border-white/85 bg-white/90 p-6 sm:p-7 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
+              >
+                <span className="inline-flex rounded-2xl bg-mint p-3 text-forest transition group-hover:scale-105">
+                  <Icon size={22} />
+                </span>
+                <p className="mt-4 text-base font-medium leading-relaxed text-ink">{text}</p>
+              </article>
+            ))}
+          </div>
+
+          {/* Center spacer: preserves full visibility of the subject on desktop */}
+          <div className="hidden lg:block min-h-[360px]" aria-hidden="true" />
+
+          {/* Right column: 3 cards top to down */}
+          <div className="flex flex-col gap-5">
+            {rightItems.map(([Icon, text]) => (
+              <article
+                key={text}
+                className="group rounded-3xl border border-white/85 bg-white/90 p-6 sm:p-7 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
+              >
+                <span className="inline-flex rounded-2xl bg-mint p-3 text-forest transition group-hover:scale-105">
+                  <Icon size={22} />
+                </span>
+                <p className="mt-4 text-base font-medium leading-relaxed text-ink">{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
