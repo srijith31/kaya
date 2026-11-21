@@ -1,15 +1,57 @@
-import React from 'react';
-import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity, Utensils, Video, HeartHandshake, PartyPopper, Bot, LayoutDashboard } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity, Utensils, Video, HeartHandshake, PartyPopper, Bot, LayoutDashboard, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 import { Container, Button, SectionHeading, Badge } from '../ui';
 
+const galleryScreens = [
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    badge: 'Daily Ritual',
+    title: 'Personalized Daily Check-in',
+    subtitle: 'Sleep, energy, mood check-ins & smart daily rhythm',
+    image: '/images/gallery/employee-dashboard.jpg',
+  },
+  {
+    id: 'micro-actions',
+    label: 'Micro-Actions',
+    badge: 'Workday Habits',
+    title: 'Actionable 2-Minute Habits',
+    subtitle: 'Movement, hydration & stress resets timed into your workday',
+    image: '/images/gallery/micro-actions.jpg',
+  },
+  {
+    id: 'ai-coach',
+    label: 'AI Coach',
+    badge: 'Ask Kaya',
+    title: 'Empathetic Wellness Chat',
+    subtitle: '24/7 private guidance for stress, energy & focus',
+    image: '/images/gallery/ai-coach.jpg',
+    isMobile: true,
+  },
+  {
+    id: 'hr-analytics',
+    label: 'HR Analytics',
+    badge: 'Organization View',
+    title: 'Burnout Risk & Participation',
+    subtitle: '100% anonymous workforce wellbeing signals & action plans',
+    image: '/images/gallery/hr-analytics.jpg',
+  },
+];
+
 export function Hero() {
+  const [activeTab, setActiveTab] = useState(0);
+  const [lightbox, setLightbox] = useState(false);
+
+  const current = galleryScreens[activeTab];
+
   return (
     <section className="relative overflow-hidden bg-warm">
       <div className="hero-grid absolute inset-0 opacity-60" aria-hidden="true" />
-      <Container className="relative flex min-h-[580px] sm:min-h-[640px] flex-col justify-center py-20 sm:py-28">
-        <div className="max-w-3xl animate-rise">
+      <Container className="relative grid min-h-[680px] items-center gap-12 py-16 lg:grid-cols-[1fr_1.08fr] lg:py-24">
+        {/* Left Column: Headline, Narrative & Buttons */}
+        <div className="animate-rise">
           <Badge><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-forest" />Designed for the everyday</Badge>
-          <h1 className="mt-7 max-w-3xl font-display text-6xl leading-[.95] tracking-tight text-teal sm:text-7xl lg:text-[5.5rem]">
+          <h1 className="mt-7 max-w-2xl font-display text-5xl leading-[.98] tracking-tight text-teal sm:text-6xl lg:text-[4.75rem]">
             Healthier People.<br /><em className="text-forest">Stronger Workplaces.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-sage">
@@ -18,10 +60,186 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Button to="/book-demo">Book a Demo <ArrowRight size={16} className="ml-2" /></Button>
             <Button to="/reserve-pilot" variant="secondary">Join the Founding Partner Programme</Button>
+            <button
+              type="button"
+              onClick={() => setLightbox(true)}
+              className="inline-flex items-center justify-center rounded-full border border-forest/20 bg-mint/60 px-5 py-3 text-sm font-semibold text-forest transition hover:bg-mint hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-mint"
+            >
+              <Maximize2 size={15} className="mr-2 text-forest" /> Product Gallery
+            </button>
           </div>
           <p className="mt-5 text-xs font-semibold uppercase tracking-[.16em] text-sage">Built for People teams · Rooted in human support</p>
         </div>
+
+        {/* Right Column: Live Product Gallery Showcase */}
+        <div className="relative mx-auto w-full max-w-[580px] animate-rise">
+          {/* Ambient background glow to blend properly with the warm palette */}
+          <div
+            className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-mint/70 via-warm to-forest/10 blur-xl opacity-80"
+            aria-hidden="true"
+          />
+
+          {/* Gallery Category Tabs */}
+          <div className="mb-3 flex items-center justify-between gap-2 overflow-x-auto pb-1">
+            <div className="flex items-center gap-1.5">
+              {galleryScreens.map((item, idx) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setActiveTab(idx)}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+                    activeTab === idx
+                      ? 'bg-teal text-white shadow-sm ring-2 ring-teal/20'
+                      : 'border border-teal/15 bg-white/80 text-forest hover:bg-mint hover:border-forest/30'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => setLightbox(true)}
+              title="Expand full screen"
+              className="inline-flex items-center gap-1 rounded-full border border-teal/15 bg-white/80 px-2.5 py-1.5 text-[11px] font-semibold text-sage hover:bg-mint hover:text-teal transition"
+            >
+              <Maximize2 size={13} />
+            </button>
+          </div>
+
+          {/* Browser Window Mockup */}
+          <div className="overflow-hidden rounded-[1.75rem] border border-teal/15 bg-white shadow-2xl shadow-teal/15 transition-all">
+            {/* Top Browser Bar */}
+            <div className="flex items-center justify-between border-b border-teal/10 bg-[#FAFBF9] px-4 py-3">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+              </div>
+              <span className="rounded-full bg-white px-3 py-0.5 text-[11px] font-medium text-sage border border-teal/10">
+                kaya.app/{current.id}
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-forest">
+                {current.badge}
+              </span>
+            </div>
+
+            {/* Viewport Frame */}
+            <div
+              onClick={() => setLightbox(true)}
+              className="group relative aspect-[16/10.5] w-full cursor-pointer overflow-hidden bg-[#F8FAF8]"
+            >
+              {current.isMobile ? (
+                // Mobile Chat UI centered inside container
+                <div className="flex h-full w-full items-center justify-center p-3">
+                  <div className="h-full max-h-[340px] aspect-[426/750] overflow-hidden rounded-2xl border-2 border-teal/20 shadow-xl bg-white">
+                    <img
+                      src={current.image}
+                      alt={current.title}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              ) : (
+                // Desktop Web View
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              )}
+
+              {/* Hover overlay hint */}
+              <div className="absolute inset-0 flex items-center justify-center bg-teal/20 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-4 py-2 text-xs font-bold text-teal shadow-lg">
+                  <Maximize2 size={14} /> Click to view full image
+                </span>
+              </div>
+            </div>
+
+            {/* Bottom Bar: Title & Slide Navigation */}
+            <div className="flex items-center justify-between border-t border-teal/10 bg-white px-4 py-3">
+              <div className="min-w-0 pr-2">
+                <p className="text-xs font-bold text-teal truncate">{current.title}</p>
+                <p className="text-[11px] text-sage truncate">{current.subtitle}</p>
+              </div>
+              <div className="flex items-center gap-1 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab((prev) => (prev - 1 + galleryScreens.length) % galleryScreens.length)}
+                  className="rounded-full p-1.5 text-sage hover:bg-mint hover:text-teal transition"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab((prev) => (prev + 1) % galleryScreens.length)}
+                  className="rounded-full p-1.5 text-sage hover:bg-mint hover:text-teal transition"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </Container>
+
+      {/* Lightbox Modal for Full Resolution Gallery */}
+      {lightbox && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-teal/80 p-4 backdrop-blur-md"
+          onClick={() => setLightbox(false)}
+        >
+          <div
+            className="relative max-h-[92vh] max-w-5xl w-full overflow-hidden rounded-3xl bg-white p-4 sm:p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between border-b border-teal/10 pb-3">
+              <div>
+                <h3 className="font-display text-xl text-teal">{current.title}</h3>
+                <p className="text-xs text-sage">{current.subtitle}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-1.5 mr-3">
+                  {galleryScreens.map((item, idx) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setActiveTab(idx)}
+                      className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                        activeTab === idx
+                          ? 'bg-teal text-white'
+                          : 'bg-mint text-forest hover:bg-mint/80'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setLightbox(false)}
+                  className="rounded-full bg-mint p-2 text-forest hover:bg-teal hover:text-white transition"
+                  aria-label="Close dialog"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+            <div className="max-h-[75vh] overflow-auto rounded-2xl bg-[#F6F8F6] p-2 flex items-center justify-center">
+              <img
+                src={current.image}
+                alt={current.title}
+                className="max-h-[72vh] w-auto max-w-full rounded-xl object-contain shadow-md"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
