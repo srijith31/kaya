@@ -98,8 +98,25 @@ export function WhatYouGet() {
     [LayoutDashboard, 'An HR dashboard showing team wellbeing trends, fully anonymous with no individual data'],
   ];
   return (
-    <section className="border-t border-teal/10 bg-warm py-20">
-      <Container>
+    <section className="relative overflow-hidden py-24 sm:py-28">
+      {/* Background Image & Multi-layer Blending */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <img
+          src="/images/what-you-get-bg.jpg"
+          alt=""
+          className="h-full w-full object-cover object-center brightness-[0.94] contrast-[1.04]"
+        />
+        {/* Soft atmospheric overlay */}
+        <div className="absolute inset-0 bg-warm/65 backdrop-blur-[1px]" />
+        {/* Harmonizing brand tint */}
+        <div className="absolute inset-0 bg-forest/5 mix-blend-multiply" />
+        {/* Top transition fade from previous section */}
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-warm via-warm/80 to-transparent" />
+        {/* Bottom transition fade to next section (mint/60) */}
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-mint/60 via-warm/70 to-transparent" />
+      </div>
+
+      <Container className="relative">
         <SectionHeading eyebrow="What you get" title="Support that fits into the rhythm of work.">
           Practical, human-centred tools designed to support your team every day.
         </SectionHeading>
@@ -107,9 +124,9 @@ export function WhatYouGet() {
           {items.map(([Icon, text]) => (
             <article
               key={text}
-              className="rounded-3xl border border-teal/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-forest/25 hover:shadow-md"
+              className="group rounded-3xl border border-white/80 bg-white/85 p-7 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white/95 hover:shadow-lg hover:shadow-teal/5"
             >
-              <span className="inline-flex rounded-2xl bg-mint p-3 text-forest">
+              <span className="inline-flex rounded-2xl bg-mint/90 p-3 text-forest transition group-hover:bg-mint group-hover:scale-105">
                 <Icon size={22} />
               </span>
               <p className="mt-5 text-base font-medium leading-relaxed text-ink">{text}</p>
