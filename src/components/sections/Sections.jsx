@@ -127,12 +127,12 @@ export function Hero() {
             {/* Viewport Frame */}
             <div
               onClick={() => setLightbox(true)}
-              className="group relative aspect-[16/10.5] w-full cursor-pointer overflow-hidden bg-[#F8FAF8]"
+              className="group relative aspect-[16/9.5] w-full cursor-pointer overflow-hidden bg-[#F8FAF8]"
             >
               {current.isMobile ? (
                 // Mobile Chat UI centered inside container
                 <div className="flex h-full w-full items-center justify-center p-3">
-                  <div className="h-full max-h-[340px] aspect-[426/750] overflow-hidden rounded-2xl border-2 border-teal/20 shadow-xl bg-white">
+                  <div className="h-full max-h-[350px] aspect-[426/750] overflow-hidden rounded-2xl border-2 border-teal/20 shadow-xl bg-white">
                     <img
                       src={current.image}
                       alt={current.title}
