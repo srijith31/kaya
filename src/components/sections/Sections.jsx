@@ -53,19 +53,15 @@ export function YogaBanner() {
         <img
           src="/images/yoga-banner.jpg"
           alt="Mindful movement in morning light"
-          className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.04]"
+          className="h-full w-full object-cover object-center brightness-100 contrast-[1.02]"
         />
-        {/* Soft dark-green overlay (35-40%) to harmonize with the site */}
+        {/* Subtle non-intrusive gradient that keeps full photo clarity and warm golden sunlight */}
         <div
-          className="absolute inset-0 bg-teal/40 mix-blend-multiply"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-teal/60 via-transparent to-teal/30"
+          className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/20"
           aria-hidden="true"
         />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-          <blockquote className="max-w-4xl font-display text-2xl leading-snug text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-5xl">
+          <blockquote className="max-w-4xl font-display text-2xl leading-snug text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] sm:text-4xl md:text-5xl lg:text-5xl">
             “Wellbeing is not a perk. It is the way people do their best work.”
           </blockquote>
         </div>
