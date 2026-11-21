@@ -118,49 +118,46 @@ export function WhatYouGet() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-mint/60 via-mint/20 to-transparent" />
       </div>
 
-      <Container className="relative">
+      <div className="relative mx-auto w-full max-w-[1480px] px-5 sm:px-8 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-3xl text-center flex flex-col items-center">
           <SectionHeading eyebrow="What you get" title="Support that fits into the rhythm of work.">
             Practical, human-centred tools designed to support your team every day.
           </SectionHeading>
         </div>
 
-        {/* 3 cards left, center framed for the yogi, 3 cards right */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-[1fr_minmax(180px,300px)_1fr] items-center">
-          {/* Left column: 3 cards top to down */}
-          <div className="flex flex-col gap-5">
+        {/* Flanked layout: 3 cards in left corner, wide open center framing face and body, 3 cards in right corner */}
+        <div className="mt-12 sm:mt-16 flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">
+          {/* Left column pushed to left corner: 3 cards top to down */}
+          <div className="flex flex-col gap-4 sm:gap-5 w-full max-w-[340px] lg:max-w-[310px] xl:max-w-[340px] lg:mr-auto">
             {leftItems.map(([Icon, text]) => (
               <article
                 key={text}
-                className="group rounded-3xl border border-white/85 bg-white/90 p-6 sm:p-7 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
+                className="group rounded-3xl border border-white/85 bg-white/90 p-5 sm:p-6 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
               >
-                <span className="inline-flex rounded-2xl bg-mint p-3 text-forest transition group-hover:scale-105">
-                  <Icon size={22} />
+                <span className="inline-flex rounded-2xl bg-mint p-2.5 text-forest transition group-hover:scale-105">
+                  <Icon size={20} />
                 </span>
-                <p className="mt-4 text-base font-medium leading-relaxed text-ink">{text}</p>
+                <p className="mt-3.5 text-sm sm:text-base font-medium leading-relaxed text-ink">{text}</p>
               </article>
             ))}
           </div>
 
-          {/* Center spacer: preserves full visibility of the subject on desktop */}
-          <div className="hidden lg:block min-h-[360px]" aria-hidden="true" />
-
-          {/* Right column: 3 cards top to down */}
-          <div className="flex flex-col gap-5">
+          {/* Right column pushed to right corner: 3 cards top to down */}
+          <div className="flex flex-col gap-4 sm:gap-5 w-full max-w-[340px] lg:max-w-[310px] xl:max-w-[340px] lg:ml-auto">
             {rightItems.map(([Icon, text]) => (
               <article
                 key={text}
-                className="group rounded-3xl border border-white/85 bg-white/90 p-6 sm:p-7 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
+                className="group rounded-3xl border border-white/85 bg-white/90 p-5 sm:p-6 shadow-sm shadow-teal/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-forest/25 hover:bg-white hover:shadow-lg"
               >
-                <span className="inline-flex rounded-2xl bg-mint p-3 text-forest transition group-hover:scale-105">
-                  <Icon size={22} />
+                <span className="inline-flex rounded-2xl bg-mint p-2.5 text-forest transition group-hover:scale-105">
+                  <Icon size={20} />
                 </span>
-                <p className="mt-4 text-base font-medium leading-relaxed text-ink">{text}</p>
+                <p className="mt-3.5 text-sm sm:text-base font-medium leading-relaxed text-ink">{text}</p>
               </article>
             ))}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
