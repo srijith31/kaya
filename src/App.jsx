@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { ArrowRight, Check, Plus, Mail, MapPin, CalendarDays, Clock3, LockKeyhole, UsersRound, Sparkles, HeartPulse, Compass, Building2, User } from 'lucide-react';
 import { Layout } from './components/layout/Layout';
 import { Container, Button, SectionHeading, Field, Badge } from './components/ui';
-import { Hero, Trust, YogaBanner, Pathway, Capabilities, WhatYouGet, QuoteBlock, CTA } from './components/sections/Sections';
+import { Hero, Trust, ProblemSection, ProductShowcase, YogaBanner, PrivacySection, Pathway, Capabilities, WhatYouGet, QuoteBlock, CTA } from './components/sections/Sections';
 import { BookingForm, BookingAside } from './components/forms/BookingForm';
 import { AdminDashboard, AdminLogin, AdminShell } from './pages/Admin';
 
@@ -22,7 +22,59 @@ function SimpleHero({ type }) {
 
 function Home() {
   const faqs = ['What is Kaya?', 'Who is Kaya for?', 'How does a pilot work?'];
-  return <><Hero /><Trust /><YogaBanner /><section className="py-20"><Container><SectionHeading eyebrow="Workplace wellness, made practical" title="Care built into the flow of working life.">Kaya gives organisations a simple, human way to support employee wellbeing — with tools people can use in the flow of their working lives.</SectionHeading><div className="mt-14 grid gap-5 md:grid-cols-3">{[['01', 'For employees', 'A private, accessible space to check in, reset and build healthier everyday habits.'], ['02', 'For People teams', 'A clear way to support wellbeing without adding another complicated programme to manage.'], ['03', 'For organisations', 'A stronger culture of care, built through small actions that become shared practice.']].map(([n, title, copy]) => <div key={n} className="rounded-3xl border border-teal/10 p-7"><span className="text-sm font-bold text-forest">{n}</span><h3 className="mt-12 font-display text-3xl text-teal">{title}</h3><p className="mt-3 leading-relaxed text-sage">{copy}</p></div>)}</div></Container></section><Capabilities /><WhatYouGet /><Pathway /><section className="bg-mint/60 py-20"><Container><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end"><SectionHeading eyebrow="Founding corporate partners" title="Help shape the next chapter of workplace wellness.">We are inviting 3–5 teams across India and worldwide to join a four-week proposed pilot and build Kaya with us from the ground up.</SectionHeading><div className="grid gap-4 sm:grid-cols-2">{['20–50 voluntary employees', 'Early product access', 'Direct founder collaboration', 'Priority onboarding'].map(item => <div key={item} className="flex items-center gap-3 rounded-2xl bg-white/70 p-4 text-sm font-semibold text-ink"><Check size={18} className="text-forest" />{item}</div>)}</div></div><Button to="/partners" variant="secondary" className="mt-10">Explore the partner invitation <ArrowRight size={16} className="ml-2" /></Button></Container></section><QuoteBlock /><section className="py-20"><Container><div className="flex flex-col justify-between gap-8 md:flex-row md:items-end"><SectionHeading eyebrow="Questions, answered" title="A clear place to start." /> <Button to="/faq" variant="secondary">Read all FAQs <ArrowRight size={16} className="ml-2" /></Button></div><div className="mt-12 grid gap-4 md:grid-cols-3">{faqs.map((q, i) => <Link key={q} to="/faq" className="rounded-3xl border border-teal/10 p-6 transition hover:-translate-y-1 hover:border-forest/30"><span className="text-xs font-bold text-forest">0{i + 1}</span><h3 className="mt-10 font-display text-2xl text-teal">{q}</h3><p className="mt-3 text-sm text-sage">Find a straightforward answer in our FAQ.</p></Link>)}</div></Container></section><CTA /></>;
+  return (
+    <>
+      <Hero />
+      <Trust />
+      <ProblemSection />
+      <ProductShowcase />
+      <YogaBanner />
+      <PrivacySection />
+      <WhatYouGet />
+      <Pathway />
+      <section className="bg-mint/60 py-20">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+            <SectionHeading eyebrow="Founding corporate partners" title="Help shape the next chapter of workplace wellness.">
+              We are inviting 3–5 teams across India and worldwide to join a four-week proposed pilot and build Kaya with us from the ground up.
+            </SectionHeading>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {['20–50 voluntary employees', 'Early product access', 'Direct founder collaboration', 'Priority onboarding'].map(item => (
+                <div key={item} className="flex items-center gap-3 rounded-2xl bg-white/70 p-4 text-sm font-semibold text-ink">
+                  <Check size={18} className="text-forest" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <Button to="/partners" variant="secondary" className="mt-10">
+            Explore the partner invitation <ArrowRight size={16} className="ml-2" />
+          </Button>
+        </Container>
+      </section>
+      <QuoteBlock />
+      <section className="py-20">
+        <Container>
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <SectionHeading eyebrow="Questions, answered" title="A clear place to start." />
+            <Button to="/faq" variant="secondary">
+              Read all FAQs <ArrowRight size={16} className="ml-2" />
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {faqs.map((q, i) => (
+              <Link key={q} to="/faq" className="rounded-3xl border border-teal/10 p-6 transition hover:-translate-y-1 hover:border-forest/30">
+                <span className="text-xs font-bold text-forest">0{i + 1}</span>
+                <h3 className="mt-10 font-display text-2xl text-teal">{q}</h3>
+                <p className="mt-3 text-sm text-sage">Find a straightforward answer in our FAQ.</p>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+      <CTA />
+    </>
+  );
 }
 
 function About() {

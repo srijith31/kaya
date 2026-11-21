@@ -1,185 +1,316 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity, Utensils, Video, HeartHandshake, PartyPopper, Bot, LayoutDashboard, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
+import { ArrowRight, Check, HeartPulse, Sparkles, ShieldCheck, Activity, Utensils, Video, HeartHandshake, PartyPopper, Bot, LayoutDashboard, ChevronLeft, ChevronRight, Maximize2, X, LockKeyhole, AlertCircle, EyeOff, Clock3, Sparkle } from 'lucide-react';
 import { Container, Button, SectionHeading, Badge } from '../ui';
 
-const galleryScreens = [
-  {
-    id: 'dashboard',
-    label: 'Dashboard',
-    badge: 'Daily Ritual',
-    title: 'Personalized Daily Check-in',
-    subtitle: 'Sleep, energy, mood check-ins & smart daily rhythm',
-    image: '/images/gallery/employee-dashboard.jpg',
-  },
-  {
-    id: 'micro-actions',
-    label: 'Micro-Actions',
-    badge: 'Workday Habits',
-    title: 'Actionable 2-Minute Habits',
-    subtitle: 'Movement, hydration & stress resets timed into your workday',
-    image: '/images/gallery/micro-actions.jpg',
-  },
-  {
-    id: 'ai-coach',
-    label: 'AI Coach',
-    badge: 'Ask Kaya',
-    title: 'Empathetic Wellness Chat',
-    subtitle: '24/7 private guidance for stress, energy & focus',
-    image: '/images/gallery/ai-coach.jpg',
-    isMobile: true,
-  },
-  {
-    id: 'hr-analytics',
-    label: 'HR Analytics',
-    badge: 'Organization View',
-    title: 'Burnout Risk & Participation',
-    subtitle: '100% anonymous workforce wellbeing signals & action plans',
-    image: '/images/gallery/hr-analytics.jpg',
-  },
-];
-
 export function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-warm py-20 sm:py-28 lg:py-32">
+      <div className="hero-grid absolute inset-0 opacity-60" aria-hidden="true" />
+      <Container className="relative flex min-h-[520px] flex-col justify-center">
+        <div className="max-w-4xl animate-rise">
+          <Badge>
+            <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-forest" />
+            Everyday Workplace Wellness
+          </Badge>
+          <h1 className="mt-7 max-w-4xl font-display text-6xl leading-[.95] tracking-tight text-teal sm:text-7xl lg:text-[5.5rem]">
+            Healthier People.<br /><em className="text-forest">Stronger Workplaces.</em>
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg sm:text-xl leading-relaxed text-sage">
+            Kaya brings proactive 30-second daily check-ins, micro-habits, and confidential AI guidance directly into the flow of working life — helping People leaders support teams before burnout begins.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Button to="/book-demo" className="px-7 py-3.5 text-base shadow-sm">
+              Book a Demo <ArrowRight size={17} className="ml-2" />
+            </Button>
+            <a
+              href="#product-showcase"
+              className="inline-flex items-center justify-center rounded-full border border-teal/20 bg-white/70 px-6 py-3.5 text-sm font-semibold text-teal transition hover:bg-mint hover:-translate-y-0.5"
+            >
+              Explore the Platform ↓
+            </a>
+            <Button to="/reserve-pilot" variant="secondary" className="border-teal/20">
+              Join Founding Partner Programme
+            </Button>
+          </div>
+          <div className="mt-9 flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-[.14em] text-sage">
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-forest" /> Zero software to install</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-forest" /> 100% Anonymous employee data</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="text-forest" /> Built for distributed teams</span>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function ProblemSection() {
+  const problems = [
+    {
+      num: '01',
+      badge: 'The Benefits Brochure Trap',
+      title: 'Support arrives only after crisis hits.',
+      description: 'Traditional wellness perks sit buried in HR portals and EAP hotlines. Employees rarely access them until they are already experiencing severe burnout or preparing to resign.',
+      outcome: 'Result: High company spend, low everyday engagement.',
+      icon: AlertCircle,
+    },
+    {
+      num: '02',
+      badge: 'The Surveillance Barrier',
+      title: 'Employees fear their vulnerability will be seen.',
+      description: 'When wellness programs ask intrusive questions, team members hesitate. If people worry their stress or mood logs might affect their standing, they disengage completely.',
+      outcome: 'Result: Distrust and superficial participation.',
+      icon: EyeOff,
+    },
+    {
+      num: '03',
+      badge: 'The One-Size-Fits-All Dilemma',
+      title: 'Generic webinars demand too much time.',
+      description: 'Hour-long sessions and once-a-year initiatives feel corporate and disconnected from daily workloads. Real human change happens in two-minute rituals, not annual seminars.',
+      outcome: 'Result: Short-lived buzz that quickly fades away.',
+      icon: Clock3,
+    },
+  ];
+
+  return (
+    <section className="bg-mint/40 py-24 sm:py-28 border-y border-teal/10">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            eyebrow="The Workplace Reality"
+            title="Workplace wellbeing shouldn’t begin when someone burns out."
+          >
+            Most corporate wellness programs fail because they ask employees to step outside their workday. Kaya builds care directly into the rhythm of daily work.
+          </SectionHeading>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {problems.map((p) => {
+            const Icon = p.icon;
+            return (
+              <article
+                key={p.num}
+                className="flex flex-col justify-between rounded-3xl border border-teal/10 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-forest/30 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-4xl text-forest/30">{p.num}</span>
+                    <span className="inline-flex rounded-xl bg-mint p-2 text-forest">
+                      <Icon size={18} />
+                    </span>
+                  </div>
+                  <span className="mt-6 inline-block rounded-full bg-warm px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-forest border border-teal/10">
+                    {p.badge}
+                  </span>
+                  <h3 className="mt-4 font-display text-2xl text-teal leading-snug">{p.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-sage">{p.description}</p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-teal/10">
+                  <p className="text-xs font-semibold text-forest/90">{p.outcome}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [lightbox, setLightbox] = useState(false);
 
-  const current = galleryScreens[activeTab];
+  const tabs = [
+    {
+      id: 'dashboard',
+      label: 'Employee Dashboard',
+      eyebrow: 'Personalized Daily Rituals',
+      title: 'A 30-second daily check-in that adapts to real workdays.',
+      description: 'Employees start their morning with a calm, friction-free check-in covering sleep, energy, mood, and available time. Kaya calibrates a realistic daily wellness rhythm with zero guilt and zero rigid goals.',
+      highlights: [
+        '30-second morning calibration without lengthy surveys',
+        'Adaptive schedule builder based on daily energy levels',
+        'Strictly 100% private to the employee — never visible to HR',
+      ],
+      businessValue: 'Drives consistent daily adoption above 70% without cognitive overload or meeting interruption.',
+      image: '/images/gallery/employee-dashboard.jpg',
+      badge: 'Daily Ritual',
+    },
+    {
+      id: 'ai-coach',
+      label: 'AI Coach',
+      eyebrow: 'Empathetic 24/7 Wellness Guidance',
+      title: 'Ask Kaya: immediate, safe support for everyday work stress.',
+      description: 'An AI wellness companion built specifically for the moments between a crisis and business-as-usual. Whether reflecting on a big project completion or navigating pre-meeting anxiety, Kaya offers calm, tailored perspectives.',
+      highlights: [
+        'Context-aware guidance for meeting stress and focus recovery',
+        'Empathetic conversational tone in English, Hindi, and Telugu',
+        'Ethical safety guardrails with direct Tele-MANAS crisis routing',
+      ],
+      businessValue: 'Provides instant, confidential decompression for employees, reducing workday stress before it escalates.',
+      image: '/images/gallery/ai-coach.jpg',
+      isMobile: true,
+      badge: 'Ask Kaya V2',
+    },
+    {
+      id: 'micro-actions',
+      label: 'Personalised Micro-Actions',
+      eyebrow: 'Bite-Sized Habit Timeline',
+      title: 'Actionable 1-to-5 minute rituals timed into the working day.',
+      description: 'Rather than demanding an hour at the gym or long meditation sessions, Kaya schedules bite-sized micro-actions — desk movement, hydration prompts, and quick body scans — that fit between calendar blocks.',
+      highlights: [
+        'Micro-habits taking 1–5 minutes: movement, hydration, stress resets',
+        'One-tap "My Day Changed" recalibrator when meetings overrun',
+        'Practical budget-friendly meal ideas to support nutrition',
+      ],
+      businessValue: 'Builds sustainable physical and mental wellbeing habits that stick throughout the working year.',
+      image: '/images/gallery/micro-actions.jpg',
+      badge: 'Micro-Actions',
+    },
+    {
+      id: 'hr-analytics',
+      label: 'HR Analytics',
+      eyebrow: 'Organization Overview & Trends',
+      title: 'Anonymous team wellbeing signals and early burnout alerts.',
+      description: 'People leaders receive high-level organizational trends without ever compromising individual trust. Track burnout risk, participation rates, and schedule adaptation patterns with concrete 30-day HR action plans.',
+      highlights: [
+        'Organizational Burnout Risk Index (0–100) based on early warning indicators',
+        'Anonymous participation metrics across teams and cohorts',
+        'Actionable HR recommendations with zero individual data access',
+      ],
+      businessValue: 'Equips HR and leadership with proactive, data-backed retention insights while protecting 100% employee trust.',
+      image: '/images/gallery/hr-analytics.jpg',
+      badge: 'HR Overview',
+    },
+  ];
+
+  const current = tabs[activeTab];
 
   return (
-    <section className="relative overflow-hidden bg-warm">
-      <div className="hero-grid absolute inset-0 opacity-60" aria-hidden="true" />
-      <Container className="relative grid min-h-[680px] items-center gap-12 py-16 lg:grid-cols-[1fr_1.08fr] lg:py-24">
-        {/* Left Column: Headline, Narrative & Buttons */}
-        <div className="animate-rise">
-          <Badge><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-forest" />Designed for the everyday</Badge>
-          <h1 className="mt-7 max-w-2xl font-display text-5xl leading-[.98] tracking-tight text-teal sm:text-6xl lg:text-[4.75rem]">
-            Healthier People.<br /><em className="text-forest">Stronger Workplaces.</em>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-sage">
-            Kaya helps organisations bring employee wellness into everyday working life through accessible digital support and personalised guidance.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button to="/book-demo">Book a Demo <ArrowRight size={16} className="ml-2" /></Button>
-            <Button to="/reserve-pilot" variant="secondary">Join the Founding Partner Programme</Button>
-            <button
-              type="button"
-              onClick={() => setLightbox(true)}
-              className="inline-flex items-center justify-center rounded-full border border-forest/20 bg-mint/60 px-5 py-3 text-sm font-semibold text-forest transition hover:bg-mint hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-mint"
-            >
-              <Maximize2 size={15} className="mr-2 text-forest" /> Product Gallery
-            </button>
-          </div>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[.16em] text-sage">Built for People teams · Rooted in human support</p>
+    <section id="product-showcase" className="py-24 sm:py-32 bg-warm">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            eyebrow="The Kaya Platform"
+            title="Inside Kaya: tools designed for the rhythm of work."
+          >
+            Explore the four core pillars that bring daily human care to employees and clear, anonymous clarity to People teams.
+          </SectionHeading>
         </div>
 
-        {/* Right Column: Live Product Gallery Showcase */}
-        <div className="relative mx-auto w-full max-w-[580px] animate-rise">
-          {/* Ambient background glow to blend properly with the warm palette */}
-          <div
-            className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-mint/70 via-warm to-forest/10 blur-xl opacity-80"
-            aria-hidden="true"
-          />
+        {/* 4 Interactive Tabs */}
+        <div className="mt-12 flex justify-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-teal/15 bg-white p-2 shadow-sm">
+            {tabs.map((tab, idx) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(idx)}
+                className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+                  activeTab === idx
+                    ? 'bg-teal text-white shadow-md'
+                    : 'text-forest hover:bg-mint hover:text-teal'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
-          {/* Gallery Category Tabs */}
-          <div className="mb-3 flex items-center justify-between gap-2 overflow-x-auto pb-1">
-            <div className="flex items-center gap-1.5">
-              {galleryScreens.map((item, idx) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveTab(idx)}
-                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
-                    activeTab === idx
-                      ? 'bg-teal text-white shadow-sm ring-2 ring-teal/20'
-                      : 'border border-teal/15 bg-white/80 text-forest hover:bg-mint hover:border-forest/30'
-                  }`}
-                >
-                  {item.label}
-                </button>
+        {/* Tab Content Display */}
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:items-center">
+          {/* Narrative & Business Outcome */}
+          <div>
+            <span className="inline-block rounded-full bg-mint px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-forest">
+              {current.eyebrow}
+            </span>
+            <h3 className="mt-5 font-display text-3xl sm:text-4xl text-teal leading-tight">
+              {current.title}
+            </h3>
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-sage">
+              {current.description}
+            </p>
+
+            <ul className="mt-8 space-y-3.5">
+              {current.highlights.map((h) => (
+                <li key={h} className="flex items-start gap-3 text-sm font-medium text-ink">
+                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-mint text-forest">
+                    <Check size={13} />
+                  </span>
+                  <span>{h}</span>
+                </li>
               ))}
+            </ul>
+
+            {/* Concrete Business Outcome Card */}
+            <div className="mt-8 rounded-2xl border border-forest/20 bg-mint/50 p-6 shadow-xs">
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-forest">
+                Measurable Business Outcome
+              </p>
+              <p className="mt-2 text-base font-semibold leading-relaxed text-teal">
+                {current.businessValue}
+              </p>
             </div>
-            <button
-              type="button"
-              onClick={() => setLightbox(true)}
-              title="Expand full screen"
-              className="inline-flex items-center gap-1 rounded-full border border-teal/15 bg-white/80 px-2.5 py-1.5 text-[11px] font-semibold text-sage hover:bg-mint hover:text-teal transition"
-            >
-              <Maximize2 size={13} />
-            </button>
           </div>
 
-          {/* Browser Window Mockup */}
-          <div className="overflow-hidden rounded-[1.75rem] border border-teal/15 bg-white shadow-2xl shadow-teal/15 transition-all">
-            {/* Top Browser Bar */}
-            <div className="flex items-center justify-between border-b border-teal/10 bg-[#FAFBF9] px-4 py-3">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-              </div>
-              <span className="rounded-full bg-white px-3 py-0.5 text-[11px] font-medium text-sage border border-teal/10">
-                kaya.app/{current.id}
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-forest">
-                {current.badge}
-              </span>
-            </div>
+          {/* Large Readable Product Preview */}
+          <div className="relative">
+            {/* Ambient subtle glow */}
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-mint via-forest/5 to-teal/10 blur-xl opacity-70" />
 
-            {/* Viewport Frame */}
-            <div
-              onClick={() => setLightbox(true)}
-              className="group relative aspect-[16/9.5] w-full cursor-pointer overflow-hidden bg-[#F8FAF8]"
-            >
-              {current.isMobile ? (
-                // Mobile Chat UI centered inside container
-                <div className="flex h-full w-full items-center justify-center p-3">
-                  <div className="h-full max-h-[350px] aspect-[426/750] overflow-hidden rounded-2xl border-2 border-teal/20 shadow-xl bg-white">
+            <div className="overflow-hidden rounded-3xl border border-teal/15 bg-white p-2.5 sm:p-3 shadow-2xl shadow-teal/10">
+              {/* Browser bar */}
+              <div className="flex items-center justify-between border-b border-teal/10 bg-[#FAFBF9] px-4 py-3 rounded-t-2xl">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+                </div>
+                <span className="rounded-full bg-white px-3.5 py-0.5 text-xs font-medium text-sage border border-teal/10">
+                  kaya.app/{current.id}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setLightbox(true)}
+                  className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold text-forest hover:bg-mint transition"
+                  title="Expand preview"
+                >
+                  <Maximize2 size={13} /> <span className="hidden sm:inline">Zoom</span>
+                </button>
+              </div>
+
+              {/* Viewport Frame */}
+              <div
+                onClick={() => setLightbox(true)}
+                className="group relative cursor-pointer overflow-hidden rounded-b-2xl bg-[#F8FAF8] flex items-center justify-center p-1"
+              >
+                {current.isMobile ? (
+                  <div className="flex h-full min-h-[440px] w-full items-center justify-center p-4">
+                    <div className="h-full max-h-[420px] aspect-[426/750] overflow-hidden rounded-2xl border-2 border-teal/20 shadow-xl bg-white">
+                      <img
+                        src={current.image}
+                        alt={current.title}
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full min-h-[380px] sm:min-h-[440px] overflow-hidden rounded-xl">
                     <img
                       src={current.image}
                       alt={current.title}
-                      className="h-full w-full object-cover object-top"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.01]"
                     />
                   </div>
+                )}
+
+                {/* Click to view full image hover badge */}
+                <div className="absolute inset-0 flex items-center justify-center bg-teal/20 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-5 py-2.5 text-xs font-bold text-teal shadow-xl">
+                    <Maximize2 size={15} /> Click to view full screenshot
+                  </span>
                 </div>
-              ) : (
-                // Desktop Web View
-                <img
-                  src={current.image}
-                  alt={current.title}
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              )}
-
-              {/* Hover overlay hint */}
-              <div className="absolute inset-0 flex items-center justify-center bg-teal/20 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-4 py-2 text-xs font-bold text-teal shadow-lg">
-                  <Maximize2 size={14} /> Click to view full image
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Bar: Title & Slide Navigation */}
-            <div className="flex items-center justify-between border-t border-teal/10 bg-white px-4 py-3">
-              <div className="min-w-0 pr-2">
-                <p className="text-xs font-bold text-teal truncate">{current.title}</p>
-                <p className="text-[11px] text-sage truncate">{current.subtitle}</p>
-              </div>
-              <div className="flex items-center gap-1 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab((prev) => (prev - 1 + galleryScreens.length) % galleryScreens.length)}
-                  className="rounded-full p-1.5 text-sage hover:bg-mint hover:text-teal transition"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab((prev) => (prev + 1) % galleryScreens.length)}
-                  className="rounded-full p-1.5 text-sage hover:bg-mint hover:text-teal transition"
-                  aria-label="Next image"
-                >
-                  <ChevronRight size={16} />
-                </button>
               </div>
             </div>
           </div>
@@ -201,22 +332,20 @@ export function Hero() {
             <div className="mb-4 flex items-center justify-between border-b border-teal/10 pb-3">
               <div>
                 <h3 className="font-display text-xl text-teal">{current.title}</h3>
-                <p className="text-xs text-sage">{current.subtitle}</p>
+                <p className="text-xs text-sage">{current.businessValue}</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="hidden sm:flex items-center gap-1.5 mr-3">
-                  {galleryScreens.map((item, idx) => (
+                  {tabs.map((tab, idx) => (
                     <button
-                      key={item.id}
+                      key={tab.id}
                       type="button"
                       onClick={() => setActiveTab(idx)}
                       className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                        activeTab === idx
-                          ? 'bg-teal text-white'
-                          : 'bg-mint text-forest hover:bg-mint/80'
+                        activeTab === idx ? 'bg-teal text-white' : 'bg-mint text-forest hover:bg-mint/80'
                       }`}
                     >
-                      {item.label}
+                      {tab.label}
                     </button>
                   ))}
                 </div>
@@ -240,6 +369,66 @@ export function Hero() {
           </div>
         </div>
       )}
+    </section>
+  );
+}
+
+export function PrivacySection() {
+  const pillars = [
+    {
+      icon: ShieldCheck,
+      title: '100% Anonymous Aggregates',
+      desc: 'HR and People teams only ever see aggregated signals across cohorts of 10 or more. Individual moods, journal entries, and check-ins are strictly invisible to employers.',
+    },
+    {
+      icon: LockKeyhole,
+      title: 'Employee-Owned Control',
+      desc: 'Participation is voluntary and self-directed. No public scoreboards, no forced corporate competitions, and no punitive metrics. Employees own their personal wellness boundary.',
+    },
+    {
+      icon: HeartPulse,
+      title: 'Care Without Clinical Pretension',
+      desc: 'Kaya is a proactive everyday wellbeing companion, not a clinical diagnostic tool. Clear ethical guardrails ensure verified crisis support (such as Tele-MANAS) is routed if acute care is required.',
+    },
+  ];
+
+  return (
+    <section className="bg-mint/50 py-24 sm:py-28 border-y border-teal/10">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            eyebrow="Privacy By Design"
+            title="Psychological safety is where real wellbeing begins."
+          >
+            Employees participate because their private reflections stay strictly their own. Kaya gives organizations meaningful culture signals without surveillance.
+          </SectionHeading>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {pillars.map((p) => {
+            const Icon = p.icon;
+            return (
+              <article
+                key={p.title}
+                className="rounded-3xl border border-teal/10 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-forest/30 hover:shadow-md"
+              >
+                <span className="inline-flex rounded-2xl bg-mint p-3 text-forest">
+                  <Icon size={24} />
+                </span>
+                <h3 className="mt-7 font-display text-2xl text-teal">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-sage">{p.desc}</p>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 rounded-2xl border border-forest/20 bg-white/70 p-6 text-center max-w-2xl mx-auto shadow-xs">
+          <p className="text-xs font-semibold uppercase tracking-wider text-forest">Our Privacy Guarantee</p>
+          <p className="mt-2 text-sm text-ink leading-relaxed">
+            Individual responses are never sold, never disclosed to managers, and never used for workplace evaluations.
+          </p>
+        </div>
+      </Container>
     </section>
   );
 }
